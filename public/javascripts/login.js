@@ -18,7 +18,7 @@ function login(){
                   setTimeout(function(){
                       localStorage.setItem('jwt',response.data.token)
                     window.location='/contact';
-                  },3000);
+                  },2000);
 
                 
             }else if(response.data.status ==false){
@@ -30,7 +30,7 @@ function login(){
                   });
                   setTimeout(function(){
                     window.location='/';
-                  },3000);
+                  },2000);
                 // alert(response.data.message);
                 // window.location='/';
 
