@@ -14,7 +14,8 @@ var signup =((req, res) => {
         lastname:req.body.lastname,
         email:req.body.email,
         password:req.body.password,
-        confirmpassword:req.body.confirmpassword
+        confirmpassword:req.body.confirmpassword,
+        // UserEmail:req.currentUser
     });
 // console.log('dbsignupd',dbsignup);
 user.findOne({email:dbsignup.email}) .then((response) => {

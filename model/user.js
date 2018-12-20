@@ -40,6 +40,7 @@ var userSchema = new mongoose.Schema({
     }
 
 
+
  });
 
 var user = mongoose.model('user',userSchema);

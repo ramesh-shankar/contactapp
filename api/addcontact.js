@@ -9,19 +9,21 @@ var contact = require('../model/contact');
 
 
 var addcontact = ((req, res) =>{
-    // console.log('req.body',req.body)
+    // console.log('curreenntte',req.currentUser)
+    console.log('req.body',req.body)
 var dbcontact = new contact({
     FirstName: req.body.FirstName,
     LastName: req.body.LastName,
     email: req.body.email,
-    DateOfBirth: req.body.DateOfBirth
-});
-// console.log(dbcontact);
-contact.findOne({email :dbcontact.email}).then((response) =>{
-// console.log('response', response);
+    DateOfBirth: req.body.DateOfBirth,
+    UserEmail: req.currentUser.email});
+console.log("dataAAAAAAAAAAAAAAAAAAAAAAAAA",dbcontact.UserEmail);
+contact.findOne({email :req.body.email}).then((response) =>{
+console.log('response', response);
     if(!response){
-        // console.log('contact does not exist');
+        console.log('contact does not exist');
         dbcontact.save().then((doc) =>{
+            console.log("save connact",doc)
             res.send({status:true, massage: 'contact saved!'});
         },(e)=>{
             res.send({stauts:false, massage:'contact not saved'});

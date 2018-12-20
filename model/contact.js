@@ -27,7 +27,13 @@ var contactlist = new mongoose.Schema({
      DateOfBirth:{
          type: Date,
          require: true         
-     }
+     },
+     UserEmail:{
+        type: String,
+        trim: true,
+        require: true
+    }
+    
 });
 
 var contact = mongoose.model('contact', contactlist);

@@ -33,17 +33,18 @@ function addcontact(){
      var contact_data= "",FirstName="", LastName="", email="", DateOfBirth="", html="";
      axios.defaults.headers.common['authorization'] = 'Bearer ' + localStorage.getItem('jwt');
      axios.get('/api/fetchcontact').then((response) => {
-        //  console.log('contactlist is:', response);
-         var data = response.data.contactlist;
-         var contactlistlength=data.length;
+         console.log('contactlist is:', response);
+         var data11 = response.data.data;
+         var contactlistlength=data11.length;
          var html='';
+         console.log("jbbjbjbgdsa",contactlistlength)
          for(i=0;i<contactlistlength;i++){
  
              html += `<tr class="info">
-             <td contenteditable='false' class="row${i}" id="FirstName${i}">${data[i].FirstName}</td>
-             <td contenteditable='false' class="row${i}" id="LastName${i}">${data[i].LastName}</td>
-             <td contenteditable='false' class="row${i}" id="email${i}">${data[i].email}</td>
-             <td contenteditable='false' class="row${i}" id="DateOfBirth${i}">${data[i].DateOfBirth}</td>
+             <td contenteditable='false' class="row${i}" id="FirstName${i}">${data11[i].FirstName}</td>
+             <td contenteditable='false' class="row${i}" id="LastName${i}">${data11[i].LastName}</td>
+             <td contenteditable='false' class="row${i}" id="email${i}">${data11[i].email}</td>
+             <td contenteditable='false' class="row${i}" id="DateOfBirth${i}">${data11[i].DateOfBirth}</td>
              <td><button id="btne${i}" onclick="editRow(this.id)">Edit</button></td>
              <td><button id="btndel${i}" onclick="deleteRow(this.id)">Delete</button></td>
          
@@ -63,7 +64,7 @@ function addcontact(){
         document.getElementsByClassName(`row${j}`)[3].setAttribute("contenteditable", "true");
         document.getElementById(`FirstName${j}`).focus();
        
-        oldemail = document.getElementById(`email${j}`).innerHTML;
+        // oldemail = document.getElementById(`email${j}`).innerHTML;
         document.getElementById(id).innerText='Update';
         document.getElementById(id).removeAttribute("onclick");
         document.getElementById(id).setAttribute("onclick","updateRow(this.id)");

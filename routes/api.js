@@ -28,6 +28,7 @@ userModel.findOne({email: decoded.id}).then((response)=>{
         if(!response || response=='')return res.send({ status: false, message: 'User not found.'});
         if(response){
           req.currentUser = response;
+          // console.log('gnhjjnhhjhgjk',req.currentUser)
           return next();
         }
       }).catch(function(err){
@@ -51,7 +52,7 @@ router.post('/signup', signup);
 router.post('/login', login);
 router.post('/contact', verifyTokenAPI,addcontact);
 router.get('/fetchcontact',verifyTokenAPI, fetchcontact);
-router.post('/updatecontact', updatecontact);
-router.post('/deletecontact', deletecontact);
+router.post('/updatecontact',verifyTokenAPI, updatecontact);
+router.post('/deletecontact', verifyTokenAPI,deletecontact);
 
 module.exports = router;
